@@ -38,7 +38,7 @@
 
 ## 下载使用
 
-到 [Releases](../../releases) 下载 `MaaHub-portable.zip`，解压后双击 `MaaHub.exe`，不需要安装。
+到 [Releases](../../releases/latest) 下载便携版 `MaaHub-v<版本号>-portable.zip`（当前为 [MaaHub-v1.1.0-portable.zip](../../releases/latest/download/MaaHub-v1.1.0-portable.zip)），解压后双击 `MaaHub.exe`，不需要安装。
 
 运行环境：Windows 10 / 11 64 位，需要 [WebView2 运行时](https://developer.microsoft.com/microsoft-edge/webview2/)（Windows 11 自带）。
 
