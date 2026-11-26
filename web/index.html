@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MaaHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i></div>
+
+  <aside class="sidebar">
+    <div class="brand" title="MaaHub">
+      <svg viewBox="0 0 32 32"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8b9bff"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs>
+        <rect width="32" height="32" rx="9" fill="url(#lg)"/>
+        <path d="M8 22V10l8 7 8-7v12" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <nav id="nav"></nav>
+    <div class="nav-bottom">
+      <button class="nav-btn" data-act="cycle-theme" id="theme-btn" title="切换主题"></button>
+    </div>
+  </aside>
+
+  <main id="main" class="main"></main>
+
+  <div id="toasts" class="toasts"></div>
+  <div id="modal-root"></div>
+  <div id="menu-root"></div>
+
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
