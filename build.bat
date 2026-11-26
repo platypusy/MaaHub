@@ -13,12 +13,14 @@ echo [2/3] 安装依赖...
 .venv\Scripts\python.exe -m pip install -q -r requirements.txt pyinstaller || goto :error
 
 echo [3/3] 打包...
+rem 注意：PyInstaller 会相对 spec 文件所在目录（build\）解析路径，所以图标和 web 用绝对路径
+set "ROOT=%~dp0"
 .venv\Scripts\python.exe -m PyInstaller --noconfirm --onefile --windowed --name MaaHub ^
-    --icon maahub.ico --add-data "web;web" --exclude-module tkinter ^
+    --icon "%ROOT%maahub.ico" --add-data "%ROOT%web;web" --exclude-module tkinter ^
     --distpath dist --workpath build --specpath build app.py || goto :error
 
-copy /y 使用说明.txt dist\ >nul
-powershell -NoProfile -Command "Compress-Archive -Force -Path dist\MaaHub.exe, dist\使用说明.txt -DestinationPath dist\MaaHub-portable.zip"
+rem 便携版只放 exe 和使用说明（排除 requirements.txt）
+powershell -NoProfile -Command "$g = Get-ChildItem *.txt | Where-Object Name -ne 'requirements.txt'; Copy-Item $g.FullName dist -Force; $files = @('dist\MaaHub.exe') + ($g | ForEach-Object { Join-Path dist $_.Name }); Compress-Archive -Force -Path $files -DestinationPath dist\MaaHub-portable.zip" || goto :error
 
 echo.
 echo 完成：dist\MaaHub.exe 和 dist\MaaHub-portable.zip

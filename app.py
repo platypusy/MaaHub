@@ -11,7 +11,7 @@ import webview
 import core
 import integrations
 
-APP_VERSION = "2.1.0"
+APP_VERSION = "1.1.0"
 
 if getattr(sys, "frozen", False):
     WEB_DIR = os.path.join(sys._MEIPASS, "web")

@@ -6,9 +6,15 @@
 - [M9A](https://github.com/MAA1999/M9A)：重返未来：1999
 - [MaaEnd](https://github.com/MaaEnd/MaaEnd)：明日方舟：终末地
 
-在一个窗口里统一启动它们，查看各自的配置和任务，追踪运行进度。
+在一个窗口里统一启动它们，查看各自的配置和任务，追踪运行进度。当前版本 **v1.1.0**，更新内容见 [CHANGELOG](CHANGELOG.md)。
 
 > MaaHub 不包含任何自动化脚本，也不修改它们的文件。脚本需要从各自的项目单独下载。
+
+![首页](docs/screenshots/home-light.png)
+
+| 应用详情：配置任务与运行记录 | 顺序执行（深色主题） |
+|---|---|
+| ![详情页](docs/screenshots/detail.png) | ![顺序执行](docs/screenshots/sequence.png) |
 
 ## 功能
 
@@ -40,15 +46,19 @@
 
 ## 从源码运行
 
-需要 Python 3.10 或以上。
+需要 Windows 和 Python（已在 Python 3.12 上测试）。
 
 ```bat
+git clone https://github.com/platypusy/MaaHub.git
+cd MaaHub
 python -m venv .venv
 .venv\Scripts\pip install -r requirements.txt
 .venv\Scripts\python app.py
 ```
 
-打包成 exe：运行 `build.bat`，生成的文件在 `dist\` 里。
+**打包成 exe**：双击 `build.bat`。它会自动创建虚拟环境、安装依赖和 PyInstaller，生成 `dist\MaaHub.exe` 和便携版 `dist\MaaHub-portable.zip`。
+
+想了解内部原理、修改功能或支持新的程序类型，请看 [开发说明](docs/开发说明.md)。
 
 ## 项目结构
 
@@ -57,8 +67,10 @@ app.py           程序入口，用 pywebview 承载界面，向前端提供接�
 core.py          后台逻辑：识别程序、启动停止、进程监控、顺序执行、日志
 integrations.py  读取各软件的版本、配置任务，解析运行动态
 web/             界面（原生 HTML / CSS / JS，无框架）
+docs/            开发说明与截图
 使用说明.txt      随便携版分发的说明
 build.bat        一键构建
+CHANGELOG.md     更新日志
 ```
 
 应用列表与设置保存在程序同目录的 `maahub_apps.json`，不会上传到仓库。

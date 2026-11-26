@@ -1,0 +1,2 @@
+# 批处理文件必须用 CRLF 换行，否则 cmd 解析中文行会出错
+*.bat text eol=crlf
